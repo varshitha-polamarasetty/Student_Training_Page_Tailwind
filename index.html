@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexWork - Launch Your Career</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Imported elegant premium fonts for high visual contrast -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAFC;
+        }
+        /* Custom Font Class Utilities */
+        .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .font-accent {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Brand Colors */
+        .text-indigo-brand { color: #7b7dfc; }
+        .bg-indigo-brand { background-color: #7b7dfc; }
+        .hover\:bg-indigo-brand-dark:hover { background-color: #6567df; }
+        .bg-amber-brand { background-color: #ffcd00; }
+        .text-amber-brand { color: #7b7dfc; }
+        
+        .card-shadow {
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Animations */
+        @keyframes customFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes customFloatDelayed {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .animate-float { animation: customFloat 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: customFloatDelayed 4.5s ease-in-out infinite; }
+        .animate-glow { animation: pulseGlow 6s ease-in-out infinite; }
+
+        /* Zoom & Hover States */
+        .zoom-hover-effect {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .zoom-hover-effect:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(123,125,252,0.15);
+        }
+
+        .img-zoom-parent .img-target {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-zoom-parent:hover .img-target {
+            transform: scale(1.08);
+        }
+
+        .btn-interactive {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+        .btn-interactive:hover {
+            transform: translateY(-2px) scale(1.03);
+        }
+        .btn-interactive:active {
+            transform: scale(0.98);
+        }
+
+        .reveal-fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ===========================
+   MOBILE RESPONSIVENESS
+=========================== */
+
+@media (max-width: 1024px) {
+
+    /* Hero section */
+    .hero-image-wrapper {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Header */
+    header .max-w-7xl {
+        height: auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .logo {
+        width: 150px;
+        height: auto;
+    }
+
+    /* Hero */
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Hero image */
+    .hero-image-wrapper {
+        width: 320px;
+        height: 320px;
+    }
+
+    .hero-image-wrapper > div:first-child {
+        width: 220px !important;
+        height: 220px !important;
+    }
+
+    .hero-image-wrapper > div:last-child {
+        width: 170px !important;
+        height: 170px !important;
+    }
+
+    /* Buttons */
+    .btn-interactive {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Section headings */
+    h2 {
+        font-size: 2rem !important;
+    }
+
+    h3 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Roadmap */
+    .roadmap-card{
+    height:100%;
+}
+
+    /* Community images */
+    .community-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Newsletter */
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+    }
+
+    footer .flex {
+        justify-content: center;
+    }
+
+    /* Floating icons */
+    .animate-float,
+    .animate-float-delayed {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero-image-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.7rem !important;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .max-w-7xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+@media (max-width:640px){
+    .hero-buttons button{
+        width:100%;
+    }
+}
+@media (max-width:640px){
+
+.hero-image-wrapper{
+    max-width:280px;
+    height:280px;
+}
+
+.hero-image-wrapper > div:first-child{
+    width:180px !important;
+    height:180px !important;
+}
+
+.hero-image-wrapper > div:last-child{
+    width:140px !important;
+    height:140px !important;
+}
+}
+@media (max-width:768px){
+
+section{
+    padding-top:60px !important;
+    padding-bottom:60px !important;
+}
+
+h2{
+    font-size:2rem !important;
+    line-height:1.2;
+}
+
+.card-shadow{
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.btn-interactive{
+    min-height:52px;
+}
+
+footer .grid{
+    text-align:center;
+}
+
+footer .flex{
+    justify-content:center;
+}
+}
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <header class="w-full bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 min-h-[80px] flex items-center justify-between flex-wrap gap-3">
+            <img href="#" class="logo" src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1779554636/flexwork_logo_xarrbu.png" width="200px" height="70px">
+            
+            <nav class="hidden md:flex items-center gap-8 text-base font-semibold text-slate-600">
+                <a href="#" class="hover:text-indigo-brand relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full transition">Our Services</a>
+                <a href="#" class="hover:text-indigo-brand relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full transition">Who We Are</a>
+                <a href="#" class="hover:text-indigo-brand relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full transition">How We Work</a>
+                <a href="#" class="hover:text-indigo-brand relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full transition">Job Postings</a>
+            </nav>
+            <button id="menuBtn"
+    class="md:hidden text-2xl text-slate-700">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+            <div class="flex items-center gap-4">
+                <button class="flex text-base font-bold text-slate-700 hover:text-indigo-brand transition items-center gap-2 duration-200 hover:scale-105">
+                    Log In <i class="fa-regular fa-circle-user text-lg"></i>
+                </button>
+                <button class="bg-amber-brand hover:bg-[#e6b800] text-slate-950 font-bold text-sm px-6 py-3.5 rounded-xl btn-interactive flex items-center gap-1.5 shadow-sm font-heading">
+                    Get Started <i class="fa-solid fa-chevron-right text-[10px] ml-0.5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t">
+        <div class="flex flex-col p-6 gap-4 font-semibold text-base">
+            <a href="#" class="hover:text-indigo-brand">Our Services</a>
+            <a href="#" class="hover:text-indigo-brand">Who We Are</a>
+            <a href="#" class="hover:text-indigo-brand">How We Work</a>
+            <a href="#" class="hover:text-indigo-brand">Job Postings</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
+        <div class="lg:col-span-6 space-y-6 reveal-fade-in">
+            <div class="inline-flex items-center gap-2 bg-[#7b7dfc]/10 border border-[#7b7dfc]/20 text-indigo-brand text-sm font-bold px-4 py-2 rounded-full transform transition duration-300 hover:translate-x-1 font-heading">
+                <span class="bg-indigo-brand text-white p-1 rounded-full text-[10px] w-5 h-5 flex items-center justify-center animate-pulse"><i class="fa-solid fa-graduation-cap"></i></span>
+                Build Skills. Launch Careers.
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] font-heading">
+                Launch Your Career.<br>Master Real-World <br><span class="text-indigo-brand inline-block hover:scale-105 transition-transform duration-300 origin-left font-accent font-semibold italic">Tech Skills.</span>
+            </h1>
+            <p class="text-slate-500 text-base md:text-lg max-w-xl leading-relaxed">
+                Go beyond theory with industry-focused learning designed to help students and fresh graduates become job-ready through real projects, expert mentorship, and practical experience.
+            </p>
+            <div class="hero-buttons flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <button class="bg-indigo-brand hover:bg-indigo-brand-dark text-white font-bold text-base px-7 py-4 rounded-xl btn-interactive flex items-center gap-2 shadow-lg shadow-[#7b7dfc]/20 font-heading">
+                    Start Learning <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+                <button class="border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-base px-7 py-4 rounded-xl btn-interactive font-heading">
+                    Explore Programs
+                </button>
+            </div>
+            
+            <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+                <div class="flex -space-x-2.5">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="w-9 h-9 rounded-full border-2 border-white object-cover transform hover:scale-110 hover:z-10 transition duration-200" alt="">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="w-9 h-9 rounded-full border-2 border-white object-cover transform hover:scale-110 hover:z-10 transition duration-200" alt="">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="w-9 h-9 rounded-full border-2 border-white object-cover transform hover:scale-110 hover:z-10 transition duration-200" alt="">
+                </div>
+                <div class="text-sm font-semibold text-slate-500">
+                    <span class="text-slate-900 font-bold">10K+ students</span> already learning with FlexWork.
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-6 flex justify-center relative select-none">
+            <div class="absolute top-12 left-8 w-12 h-12 bg-[#7b7dfc]/10 rounded-2xl flex items-center justify-center text-indigo-brand text-xl shadow-sm z-20 animate-float"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="absolute bottom-16 left-2 w-10 h-10 bg-[#ffcd00]/10 rounded-xl flex items-center justify-center text-amber-brand text-lg shadow-sm z-20 animate-float-delayed"><i class="fa-solid fa-chart-simple"></i></div>
+            <div class="absolute top-20 right-2 w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 text-xl shadow-sm z-20 animate-float-delayed"><i class="fa-solid fa-code"></i></div>
+            <div class="absolute bottom-28 right-8 w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-[#7b7dfc] text-lg shadow-sm z-20 animate-float"><i class="fa-solid fa-globe"></i></div>
+            
+            <div class="relative hero-image-wrapper w-full max-w-[420px] sm:max-w-[500px] h-[420px] sm:h-[500px] mx-auto">
+                <!-- Top Circle -->
+                <div class="absolute top-0 right-0 w-[320px] h-[320px] rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <div class="absolute inset-0 bg-[#7b7dfc] opacity-10"></div>
+                    <img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780158317/download_jlzsac.png" class="w-full h-full object-cover">
+                </div>
+                <!-- Bottom Circle -->
+                <div class="absolute bottom-0 left-10 w-[250px] h-[250px] rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <div class="absolute inset-0 bg-[#ffcd00] opacity-10"></div>
+                    <img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780158559/image-removebg-preview_wozws7.png" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations -->
+    <section data-aos="fade-up" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">Explore Career-Focused Specializations</h2>
+            <p class="text-slate-500 text-base">Built to help students learn in-demand skills and launch real careers.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10 font-heading">
+            <button class="bg-indigo-brand text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-sm btn-interactive">UI/UX Design</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">Digital Marketing</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">Data Analytics</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">Full Stack Development</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">Cyber Security</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">Business & Sales</button>
+            <button class="bg-white border border-slate-200 text-slate-600 hover:border-[#7b7dfc]/40 text-sm font-semibold px-5 py-2.5 rounded-full transition btn-interactive">AI & Automation</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 card-shadow flex flex-col h-full group zoom-hover-effect img-zoom-parent">
+                <div class="relative h-44 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover img-target" alt="">
+                    <span class="absolute top-3 right-3 bg-amber-brand text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-md transition-transform group-hover:scale-105 z-10 font-heading">20K+ Enrolled</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow justify-between">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-xl bg-[#7b7dfc]/10 flex items-center justify-center text-indigo-brand text-base transition-transform group-hover:rotate-12"><i class="fa-solid fa-palette"></i></div>
+                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-indigo-brand transition-colors font-heading">UI/UX Design</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Create user-first digital experiences that people love to use.</p>
+                    </div>
+                    <a href="#" class="text-indigo-brand font-bold text-sm flex items-center gap-1.5 hover:text-[#6567df] transition pt-4 font-heading">Enroll Now <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 card-shadow flex flex-col h-full group zoom-hover-effect img-zoom-parent">
+                <div class="relative h-44 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover img-target" alt="">
+                    <span class="absolute top-3 right-3 bg-indigo-brand text-white font-extrabold text-xs px-2.5 py-1 rounded-md transition-transform group-hover:scale-105 z-10 font-heading">30K+ Enrolled</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow justify-between">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-base transition-transform group-hover:rotate-12"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-indigo-brand transition-colors font-heading">Digital Marketing</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Learn SEO, social media, paid ads & content strategies that convert.</p>
+                    </div>
+                    <a href="#" class="text-indigo-brand font-bold text-sm flex items-center gap-1.5 hover:text-[#6567df] transition pt-4 font-heading">Join Program <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 card-shadow flex flex-col h-full group zoom-hover-effect img-zoom-parent">
+                <div class="relative h-44 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover img-target" alt="">
+                    <span class="absolute top-3 right-3 bg-amber-brand text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-md transition-transform group-hover:scale-105 z-10 font-heading">25K+ Enrolled</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow justify-between">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-xl bg-[#ffcd00]/10 flex items-center justify-center text-[#ffcd00] text-base transition-transform group-hover:rotate-12"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-indigo-brand transition-colors font-heading">Data Analytics</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Work with real datasets and turn numbers into meaningful insights.</p>
+                    </div>
+                    <a href="#" class="text-indigo-brand font-bold text-sm flex items-center gap-1.5 hover:text-[#6567df] transition pt-4 font-heading">Start Learning <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 card-shadow flex flex-col h-full group zoom-hover-effect img-zoom-parent">
+                <div class="relative h-44 bg-slate-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover img-target" alt="">
+                    <span class="absolute top-3 right-3 bg-indigo-brand text-white font-extrabold text-xs px-2.5 py-1 rounded-md transition-transform group-hover:scale-105 z-10 font-heading">35K+ Enrolled</span>
+                </div>
+                <div class="p-6 flex flex-col flex-grow justify-between">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-[#7b7dfc] text-base transition-transform group-hover:rotate-12"><i class="fa-solid fa-code"></i></div>
+                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-indigo-brand transition-colors font-heading">Full Stack Development</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Build modern web applications from front-end to back-end.</p>
+                    </div>
+                    <a href="#" class="text-indigo-brand font-bold text-sm flex items-center gap-1.5 hover:text-[#6567df] transition pt-4 font-heading">Enroll Now <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section data-aos="fade-right" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="bg-[#7b7dfc]/5 rounded-[32px] p-8 md:p-12 border border-[#7b7dfc]/10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-5 space-y-4">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight font-heading">
+                    Theory is boring.<br>Real projects aren't.
+                </h2>
+                <p class="text-slate-500 text-base leading-relaxed max-w-sm">
+                    We bridge the gap between academic theory and industry reality through immersive learning.
+                </p>
+                <div class="pt-2 img-zoom-parent inline-block rounded-2xl overflow-hidden">
+                    <img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780161808/ChatGPT_Image_May_30_2026_10_51_36_PM_mtpoc8.png" class="w-full max-w-xs rounded-2xl border border-white shadow-sm img-target" alt="Projects">
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow flex gap-4 zoom-hover-effect group">
+                    <div class="w-10 h-10 rounded-xl bg-[#7b7dfc]/10 text-indigo-brand flex items-center justify-center text-lg shrink-0 transition-transform group-hover:scale-110"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-900 text-sm font-heading">Industry Skills</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Learn the exact tools and frameworks used by top tech companies today.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow flex gap-4 zoom-hover-effect group">
+                    <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg shrink-0 transition-transform group-hover:scale-110"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-900 text-sm font-heading">Expert Mentorship</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Weekly 1:1 sessions with pros currently working at FAANG and startups.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow flex gap-4 zoom-hover-effect group">
+                    <div class="w-10 h-10 rounded-xl bg-[#ffcd00]/10 text-amber-600 flex items-center justify-center text-lg shrink-0 transition-transform group-hover:scale-110"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-900 text-sm font-heading">Hands-On Projects</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Build real, deployable applications & a strong portfolio that stands out.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow flex gap-4 zoom-hover-effect group">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#7b7dfc] flex items-center justify-center text-lg shrink-0 transition-transform group-hover:scale-110"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-900 text-sm font-heading">Career Support</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">Resume building, mock interviews, and access to our hiring network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accelerator Details -->
+    <section class="max-w-7xl mx-auto px-6 py-10" data-aos="zoom-in">
+        <div class="bg-white border border-slate-100 card-shadow rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center img-zoom-parent">
+            <div class="p-8 md:p-12 lg:col-span-6 space-y-5">
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight font-heading">
+                    Industry-Led Career Accelerator
+                </h3>
+                <p class="text-slate-500 text-base leading-relaxed">
+                    Gain practical experience through real-world projects, mentorship, and hands-on learning designed to prepare you for today's fast-moving industries.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                    <div class="flex gap-3 group">
+                        <div class="w-10 h-10 bg-[#7b7dfc]/10 text-indigo-brand flex items-center justify-center rounded-xl text-sm shrink-0 group-hover:scale-110 transition-transform"><i class="fa-solid fa-id-card-clip"></i></div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm font-heading">Mentorship</h5>
+                            <p class="text-slate-400 text-xs leading-normal">Learn from experienced industry professionals and career experts.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 group">
+                        <div class="w-10 h-10 bg-purple-50 text-purple-600 flex items-center justify-center rounded-xl text-sm shrink-0 group-hover:scale-110 transition-transform"><i class="fa-solid fa-folder-open"></i></div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm font-heading">Program Access</h5>
+                            <p class="text-slate-400 text-xs leading-normal">Live sessions, project-based learning, portfolio guidance, and career support.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button class="bg-indigo-brand hover:bg-indigo-brand-dark text-white font-bold text-sm px-6 py-4 rounded-xl btn-interactive flex items-center gap-2 shadow-sm font-heading">
+                        Start Your Journey <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-6 h-full min-h-[350px] bg-slate-900 relative overflow-hidden">
+                <img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780161296/Screenshot_2026-05-30_224344_qne3cz.png" class="w-full h-full object-cover opacity-40 mix-blend-luminosity img-target" alt="">
+                <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent hidden lg:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap / Pathway Steps -->
+    <section data-aos="fade-up" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-heading">
+                The Path to Your First Big Role
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+            <!-- STEP 1 -->
+            <div class="relative h-full">
+                <div class="roadmap-card bg-[#F3F1FF] rounded-3xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#7B7DFC] text-white flex items-center justify-center font-bold text-xl font-heading">01</div>
+                    <div class="mt-8 mb-4"><i class="fa-solid fa-bullseye text-4xl text-[#7B7DFC]"></i></div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 min-h-[60px] flex items-center justify-center font-heading">Choose Path</h4>
+                    <p class="text-slate-600 text-base leading-relaxed flex-grow">Select a career path aligned with your interests, strengths, and future goals.</p>
+                </div>
+                <div class="hidden lg:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center z-10">
+                    <div class="w-12 border-t-2 border-dotted border-[#7B7DFC]"></div>
+                    <i class="fa-solid fa-chevron-right text-[#7B7DFC] text-xs ml-1"></i>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="relative h-full">
+                <div class="roadmap-card bg-[#FFF7E3] rounded-3xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#FFC83D] text-white flex items-center justify-center font-bold text-xl font-heading">02</div>
+                    <div class="mt-8 mb-4"><i class="fa-solid fa-book-open text-4xl text-[#FFC83D]"></i></div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 min-h-[60px] flex items-center justify-center font-heading">Learn Through Projects</h4>
+                    <p class="text-slate-600 text-base leading-relaxed flex-grow">Build practical skills with hands-on assignments, live sessions, and real-world tasks.</p>
+                </div>
+                <div class="hidden lg:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center z-10">
+                    <div class="w-12 border-t-2 border-dotted border-[#7B7DFC]"></div>
+                    <i class="fa-solid fa-chevron-right text-[#7B7DFC] text-xs ml-1"></i>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="relative h-full">
+                <div class="roadmap-card bg-[#F3F1FF] rounded-3xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#8B5CF6] text-white flex items-center justify-center font-bold text-xl font-heading">03</div>
+                    <div class="mt-8 mb-4"><i class="fa-solid fa-briefcase text-4xl text-[#8B5CF6]"></i></div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 min-h-[60px] flex items-center justify-center font-heading">Build Your Portfolio</h4>
+                    <p class="text-slate-600 text-base leading-relaxed flex-grow">Create industry-ready projects that showcase your skills and stand out to recruiters.</p>
+                </div>
+                <div class="hidden lg:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center z-10">
+                    <div class="w-12 border-t-2 border-dotted border-[#7B7DFC]"></div>
+                    <i class="fa-solid fa-chevron-right text-[#7B7DFC] text-xs ml-1"></i>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="relative h-full">
+                <div class="roadmap-card bg-[#FFF7E3] rounded-3xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#FFC83D] text-white flex items-center justify-center font-bold text-xl font-heading">04</div>
+                    <div class="mt-8 mb-4"><i class="fa-solid fa-chart-line text-4xl text-[#FFC83D]"></i></div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-3 min-h-[60px] flex items-center justify-center font-heading">Start Your Career</h4>
+                    <p class="text-slate-600 text-base leading-relaxed flex-grow">Connect with hiring partners, internships, freelance opportunities, and career advancement through FlexWork.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section data-aos="fade-up" class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-4 space-y-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight font-heading">Student Success Stories</h2>
+            <p class="text-slate-500 text-base leading-relaxed">Hear from learners who gained real skills, built confidence, and started their careers with FlexWork.</p>
+            <div class="flex items-center gap-3 pt-2">
+                <button class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#7b7dfc] hover:text-white btn-interactive"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                <button class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#7b7dfc] hover:text-white btn-interactive"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow space-y-4 flex flex-col justify-between zoom-hover-effect">
+                <div class="space-y-3">
+                    <div class="flex text-amber-brand text-xs gap-0.5 animate-pulse">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic leading-relaxed">
+                        "FlexWork helped me move beyond theory and actually work on real projects. The experience gave me the confidence to apply for roles I never thought I could."
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 pt-2">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" class="w-9 h-9 rounded-full object-cover ring-2 ring-transparent hover:ring-[#7b7dfc] transition duration-300" alt="">
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm font-heading">Adarsh Verma</h5>
+                        <p class="text-slate-400 text-xs">UI/UX Designer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 card-shadow space-y-4 flex flex-col justify-between zoom-hover-effect">
+                <div class="space-y-3">
+                    <div class="flex text-amber-brand text-xs gap-0.5 animate-pulse">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic leading-relaxed">
+                        "The mentorship and hands-on learning made a huge difference for me. I built a strong portfolio and started getting freelance opportunities even before completing the program."
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 pt-2">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" class="w-9 h-9 rounded-full object-cover ring-2 ring-transparent hover:ring-[#7b7dfc] transition duration-300" alt="">
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm font-heading">Sneha Iyer</h5>
+                        <p class="text-slate-400 text-xs">Digital Marketing Associate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Hub Area -->
+    <section data-aos="zoom-in-up" class="max-w-7xl mx-auto px-6 py-10">
+        <div class="bg-indigo-brand rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-12 text-white">
+            <div class="p-8 md:p-12 lg:col-span-5 space-y-6 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight font-heading">Join a Community Built for Growth</h2>
+                    <p class="text-indigo-100/80 text-sm leading-relaxed max-w-sm">
+                        Learn, collaborate, and connect with students, mentors, creators, and industry professionals building the future together.
+                    </p>
+                </div>
+
+                <div class="bg-white/10 border border-white/10 p-5 rounded-xl flex gap-3 transform transition hover:translate-x-1 duration-300">
+    <div class="text-sm text-white shrink-0 pt-0.5">
+        <i class="fa-solid fa-users"></i>
+    </div>
+    <div>
+        <h6 class="font-bold text-sm">Collaborative Learning</h6>
+        <p class="text-indigo-100/70 text-xs mt-0.5">
+            Join live projects, hackathons, and peer learning.
+        </p>
+    </div>
+</div>
+
+<div class="bg-white/10 border border-white/10 p-5 rounded-xl flex gap-3 transform transition hover:translate-x-1 duration-300">
+    <div class="text-sm text-white shrink-0 pt-0.5">
+        <i class="fa-solid fa-video"></i>
+    </div>
+    <div>
+        <h6 class="font-bold text-sm">Live Industry Sessions</h6>
+        <p class="text-indigo-100/70 text-xs mt-0.5">
+            Attend expert-led workshops, portfolio reviews, and career-focused sessions.
+        </p>
+    </div>
+</div>
+
+<div class="bg-white/10 border border-white/10 p-5 rounded-xl flex gap-3 transform transition hover:translate-x-1 duration-300">
+    <div class="text-sm text-white shrink-0 pt-0.5">
+        <i class="fa-solid fa-network-wired"></i>
+    </div>
+    <div>
+        <h6 class="font-bold text-sm">Career Networking</h6>
+        <p class="text-indigo-100/70 text-xs mt-0.5">
+            Connect with mentors, hiring partners, creators, and like-minded learners.
+        </p>
+    </div>
+</div>
+            </div>
+
+            <div class="lg:col-span-7 bg-black/10 p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center community-grid">
+                <div class="space-y-4">
+                    <div class="rounded-2xl overflow-hidden img-zoom-parent"><img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780162971/ChatGPT_Image_May_30_2026_11_11_10_PM_ojyqp5.png" alt=""></div>
+                    <div class="rounded-2xl overflow-hidden img-zoom-parent"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=300&q=80" class="rounded-2xl w-full aspect-[4/3] object-cover img-target" alt=""></div>
+                </div>
+                <div class="space-y-4">
+                    <div class="rounded-2xl overflow-hidden img-zoom-parent"><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=300&q=80" class="rounded-2xl w-full aspect-[4/3] object-cover img-target" alt=""></div>
+                    <div class="rounded-2xl overflow-hidden img-zoom-parent"><img src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1780162902/ChatGPT_Image_May_30_2026_11_10_23_PM_lpmqiu.png" class="rounded-2xl w-full aspect-square object-cover img-target" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section data-aos="fade-up" class="max-w-2xl mx-auto px-6 py-14 space-y-6">
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight font-heading">Got Questions?</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white border border-slate-100 card-shadow rounded-xl transition-all duration-300 hover:border-[#7b7dfc]/30">
+                <button class="w-full px-6 py-5 text-left font-bold text-sm text-slate-800 flex justify-between items-center hover:text-indigo-brand transition-colors group font-heading">
+                    <span>Do I need prior experience to join?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-hover:text-indigo-brand group-hover:translate-y-0.5 transition-transform"></i>
+                </button>
+            </div>
+            <div class="bg-white border border-slate-100 card-shadow rounded-xl transition-all duration-300 hover:border-[#7b7dfc]/30">
+                <button class="w-full px-6 py-5 text-left font-bold text-sm text-slate-800 flex justify-between items-center hover:text-indigo-brand transition-colors group font-heading">
+                    <span>Are the programs focused on practical learning?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-hover:text-indigo-brand group-hover:translate-y-0.5 transition-transform"></i>
+                </button>
+            </div>
+            <div class="bg-white border border-slate-100 card-shadow rounded-xl transition-all duration-300 hover:border-[#7b7dfc]/30">
+                <button class="w-full px-6 py-5 text-left font-bold text-sm text-slate-800 flex justify-between items-center hover:text-indigo-brand transition-colors group font-heading">
+                    <span>Will I receive a certificate after completion?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-hover:text-indigo-brand group-hover:translate-y-0.5 transition-transform"></i>
+                </button>
+            </div>
+            <div class="bg-white border border-slate-100 card-shadow rounded-xl transition-all duration-300 hover:border-[#7b7dfc]/30">
+                <button class="w-full px-6 py-5 text-left font-bold text-sm text-slate-800 flex justify-between items-center hover:text-indigo-brand transition-colors group font-heading">
+                    <span>How will FlexWork help with my career growth?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-hover:text-indigo-brand group-hover:translate-y-0.5 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-16 pb-8" style="color: #7b7dfc;">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+        
+        <!-- Brand & Socials Section -->
+        <div class="lg:col-span-4 space-y-4">
+            <img href="#" class="logo" src="https://res.cloudinary.com/dxcwpasvu/image/upload/v1779554636/flexwork_logo_xarrbu.png" width="200px" height="70px">
+            <p class="text-sm" style="color: #7b7dfc;">Master skills. Build portfolio. Launch careers.</p>
+            <div class="flex items-center gap-4 pt-1" style="color: #7b7dfc;">
+                <a href="#" class="transition-transform hover:scale-125 duration-200" style="color: #7b7dfc;"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+                <a href="#" class="transition-transform hover:scale-125 duration-200" style="color: #7b7dfc;"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="#" class="transition-transform hover:scale-125 duration-200" style="color: #7b7dfc;"><i class="fa-brands fa-youtube text-base"></i></a>
+                <a href="#" class="transition-transform hover:scale-125 duration-200" style="color: #7b7dfc;"><i class="fa-brands fa-twitter text-base"></i></a>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-6 font-medium">
+            <div class="space-y-3">
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">Home</a>
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">Our Services</a>
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">About Us</a>
+            </div>
+            <div class="space-y-3">
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">How We Work</a>
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">Job Postings</a>
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">Pricing</a>
+            </div>
+            <div class="space-y-3">
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">FAQ</a>
+                <a href="#" class="block text-sm transition-colors transform hover:translate-x-0.5 duration-200" style="color: #7b7dfc;">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="lg:col-span-3 space-y-3">
+            <h5 class="font-bold text-sm tracking-wider uppercase font-heading" style="color: #7b7dfc;">Subscribe to our newsletter</h5>
+            <div class="flex flex-col sm:flex-row gap-2 newsletter-form">
+                <input type="email" placeholder="Enter Your Email" class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm w-full focus:outline-none focus:border-indigo-brand transition-colors" style="color: #7b7dfc;">
+                <button class="bg-amber-brand hover:bg-[#e6b800] text-slate-955 px-5 rounded-xl text-sm btn-interactive"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="max-w-7xl mx-auto px-6 pt-6 border-t border-slate-100 flex flex-wrap justify-between items-center gap-4 text-sm font-medium" style="color: #7b7dfc;">
+        <div>&copy; 2026 FlexWork. All rights reserved. Made with <i class="fa-solid fa-heart text-red-500 mx-0.5 animate-pulse"></i> in India</div>
+        <div class="flex gap-6">
+            <a href="#" class="transition opacity-90 hover:opacity-100" style="color: #7b7dfc;">Privacy Policy</a>
+            <a href="#" class="transition opacity-90 hover:opacity-100" style="color: #7b7dfc;">Terms & Conditions</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration: 1000,
+    once: true
+});
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if(menuBtn) {
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+}
+</script>
+</body>
+</html>
